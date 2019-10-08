@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style type="text/css" src="game.css"></style>
+		<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="introtoapps.min.js"></script>	
+		<script type="text/javascript" src="game.js"></script>	
+		<script type="text/javascript">
+			/* Creating 5 frogs at once  */
+			var bulletNumber=1;
+			$(document).ready(function(){
+
+				var score=0;
+				$(".enemyFire").onCollision(function(otObject){
+					if(otherObject.hasClass("hero"))
+					{
+						this.remove();
+						otObject.remove();
+					}
+				});
+
+				/* Destroying the frog*/
+
+				
+			});
+		</script>
+
+		<style type="text/css">
+			
+			*,*:before, *:after {box-sizing: border-box;}
+			
+			html,body{
+				width:100%;
+				height:100%;
+				overflow: hidden;
+				margin: 0;
+			}
+
+			body
+			{
+				background-image: url(images/bg.jpg);
+				background-size: cover;
+			}
+
+			.startGame {
+				height: 100%;
+				width: 100%;
+				position: fixed;
+				z-index: 100;
+				top: 0;
+				left: 0;
+				background-color: rgba(0,0,0, 0.9);
+				overflow-x: auto;
+				overflow: hidden;
+				text-align: center;
+				transition: .5s;
+			}
+
+			/* frog can bounce.*/
+			#leftlog{
+				background-color: rgba(255, 255, 0, 0);
+				top: 0px;
+				left: 0px;
+				height: 100vh;
+				width: 10px;
+				position: absolute;
+			}
+
+			/* frog can bounce off*/
+			#rightlog{
+				background-color: rgba(255, 255, 255, 0);
+				top: 0px;
+				right: 0px;
+				height: 100vh;
+				width: 10px;
+				position: absolute;
+			}
+			
+			
+			#bottomlog{
+				background-color: rgba(255, 255, 255, 0);
+				bottom: 0px;
+				height: 10px;
+				width: 100vw;
+				position: absolute;
+			}
+
+			/* Creating a frog*/
+			.frog,.enemyFire,.hero{
+				position: absolute;
+				display: inline-block;
+			}
+			
+			.frog,.hero{
+				background-image: url("images/Enemies/enemyBlack1.png");
+				background-size: 40px 25px;
+				width: 40px;
+				height: 25px;
+			}
+
+			/* Creating a duck which spawn*/
+			.hero_bullet{
+				background-image: url("images/laserRed01.png");
+				background-size: 10px 30px;
+				width: 10px;
+				height: 30px;
+				bottom: 10px;
+				position: absolute;
+			}
+
+			.hero
+			{
+				background-image: url("images/hero.png");
+				left: 115px;
+				bottom: 20px;
+			}
+
+			.enemyContainer{
+				position: relative;
+				width: 250px;
+				/*margin: 0 auto;*/
+			}
+			
+			/*
+			.fire_button
+			{
+				background-image: url("images/button/C1_shoot.png");
+				background-size: 40px 36px;
+				width: 40px;
+				height: 36px;
+				bottom: 10px;
+				right: 10px;
+				position: fixed;
+
+			}
+			*/
+			
+			
+			.frog,.hero_bullet,#leftlog,#rightlog{z-index: 8;}
+			.hero,.enemyFire,.meteor,#bottomlog{z-index:9}
+			
+			.life
+			{
+
+			}
+
+			.coinContainer {
+				position: fixed;
+				top: 10px;
+				right: 15px;
+				width: 38%;
+				max-width:200px;
+				height: 33px;
+				background: white;
+				text-align: center;
+				border-bottom-left-radius: 30px;
+				border-top-right-radius: 30px;
+				color: #182f4e;
+				line-height: 33px;
+				font-size: 20px;
+				font-weight: bold;
+				opacity: 0.43;
+			}
+			
+			/* Buttons */
+			
+			.fire_button{
+				background-image: url(images/button/C1_Shoot.png);				
+				width: 60px;
+				height: 52px;
+				bottom: 10px;
+				right: 15px;
+				position: absolute;
+				opacity: 0.4;
+				z-index: 99;
+			}
+			
+			/*Start Button*/
+
+			.container{
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				transform: -webkit-translate(-50%, -50%);
+				transform: -moz-translate(-50%, -50%);
+				transform: -ms-translate(-50%, -50%);
+			}
+
+			:root {
+				--bg: #3C465C;
+				--primary: #78FFCD;
+				--solid: #fff;
+				--btn-w: 10em;
+				--dot-w: calc(var(--btn-w)*.2);
+				--tr-X: calc(var(--btn-w) - var(--btn-w)*.2);
+			}
+			
+.btn {
+	position: relative;
+	margin: 0 auto;
+	width: var(--btn-w);
+	color: var(--primary);
+	border: .15em solid var(--primary);
+	border-radius: 5em;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 1.3em;
+	line-height: 2em;
+	cursor: pointer;	
+}
+.dot {
+	content: '';
+	position: absolute;
+	top: 0;
+	width: var(--dot-w);
+	height: 100%;
+	border-radius: 100%;
+	-webkit-transition: all 300ms ease;
+	transition: all 300ms ease;
+	display: none;
+}
+.dot:after {
+	content: '';
+	position: absolute;
+	left: calc(50% - .4em);
+	top: -.4em;
+	height: .8em;
+	width: .8em;
+	background: var(--primary);
+	border-radius: 1em;
+	border: .25em solid var(--solid);
+	box-shadow: 0 0 .7em var(--solid),
+				0 0 2em var(--primary);
+}
+.btn:hover .dot,
+.btn .dot {
+	-webkit-animation: atom 2s infinite linear;
+	        animation: atom 2s infinite linear;
+	display: block;
+}
+@-webkit-keyframes atom {
+	0% {-webkit-transform: translateX(0) rotate(0);transform: translateX(0) rotate(0);}
+	30%{-webkit-transform: translateX(var(--tr-X)) rotate(0);transform: translateX(var(--tr-X)) rotate(0);}
+	50% {-webkit-transform: translateX(var(--tr-X)) rotate(180deg);transform: translateX(var(--tr-X)) rotate(180deg);}
+	80% {-webkit-transform: translateX(0) rotate(180deg);transform: translateX(0) rotate(180deg);}
+	100% {-webkit-transform: translateX(0) rotate(360deg);transform: translateX(0) rotate(360deg);}
+}
+@keyframes atom {
+	0% {-webkit-transform: translateX(0) rotate(0);transform: translateX(0) rotate(0);}
+	30%{-webkit-transform: translateX(var(--tr-X)) rotate(0);transform: translateX(var(--tr-X)) rotate(0);}
+	50% {-webkit-transform: translateX(var(--tr-X)) rotate(180deg);transform: translateX(var(--tr-X)) rotate(180deg);}
+	80% {-webkit-transform: translateX(0) rotate(180deg);transform: translateX(0) rotate(180deg);}
+	100% {-webkit-transform: translateX(0) rotate(360deg);transform: translateX(0) rotate(360deg);}
+}
+
+
+			</style>
+		</head>
+	<body>
+	
+		<div class="startGame">
+			<div class="container">
+				<div class="btn">
+					<span>Start Game</span>
+					<div class="dot"></div>
+				</div>
+			</div>
+		</div>
+		<div class="coinContainer"> 0 Pts</div>
+		<div id='leftlog'></div>
+		<div id='rightlog'></div>
+		<div id='bottomlog'></div>
+		<div class="enemyContainer"></div>
+		<div class='fire_button'></div>
+<div class='left_button'></div>
+<div class='left_button'></div>
+<div class='life'></div>
+	</body>
+</html>
